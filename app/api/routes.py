@@ -40,7 +40,6 @@ def get_contact(current_user_token):
 @api.route('/contacts/<id>', methods = ['GET'])
 @token_required
 def get_single_contact(current_user_token, id):
-    current_user_token= current_user_token.token
     contact = Contact.query.get(id)
     response = contact_schema.dump(contact)
     return jsonify(response)
@@ -51,10 +50,10 @@ def update_contact(current_user_token,id):
     contact = Contact.query.get(id) 
     contact.name = request.json['name']
     contact.email = request.json['email']
-    contact.car_year = request.json['car year']
-    contact.car_make = request.json['car make']
-    contact.car_model = request.json['car model']
-    contact.car_color = request.json['car color']
+    contact.car_year = request.json['car_year']
+    contact.car_make = request.json['car_make']
+    contact.car_model = request.json['car_model']
+    contact.car_color = request.json['car_color']
     contact.user_token = current_user_token.token
 
     db.session.commit()

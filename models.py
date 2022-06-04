@@ -66,7 +66,7 @@ class Contact(db.Model):
     car_color = db.Column(db.String(100))
     user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
-    def __init__(self,name,email,car_year,car_make,car_model,car_color,user_token, id = ''):
+    def __init__(self,name,email,car_year,car_make,car_model,car_color,user_token,id=''):
         self.id = self.set_id()
         self.name = name
         self.email = email
